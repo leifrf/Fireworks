@@ -1,0 +1,82 @@
+So this is our idea cloud.
+It's where I'm going to think "what should I do now"? or "what should I do next"? etc...
+
+
+LAUNCH FIREWORKS ON DIFFERENT PLANETS
+EACH PLANET HAS A DIFFERENT BACKGROUND
+EACH PLANET HAS DIFFERENT GRAVITY AND DRAG RESISTANCE MODIFIERS
+
+current thoughts:
+the prof made his particlemanager to return the properties of his particles at a given time.
+he does this by giving update(time) in his manager object a new time.
+update() creates (as in it updates, surprise) the new positions, spark counts, etc....
+then, he increments time IN HIS MAIN CLASS and passes it in again.
+when he gets to the value he wants a snapshot at, he stops iterating and prints the toString for the manager.
+
+thus, the accuracy of his rungeKutta simulation is based on the magnitude of the time increment he uses in his MAIN CLASS
+
+
+so the prof pretty much built the particleManager to just give in at the one time.
+
+so particlemanager is kind of a particle manager, but i want MORE from it than what it's currently doing.
+
+what I want to be able to do:
+
+create different fireworks with different properties
+these fireworks that i create will act as a database for future firework displays, where i can incorporate multiple fireworks
+
+i want to be able to see a firework i've archived - i want to be able to pull up a .png or .jpg with a picture of it. 
+to do this i will need to draw the firework, either point-by-point, or from a stored file.
+
+now it's just a question of whether I want to consume ram, or consume storage space.
+
+REASONING AND GOOD THINKING:
+
+i can't expect the user to know how RungeKutta works. if they give the time interval, it could be huge.
+alternatively, i can set an exception on the time interval so that they can't get too off track.
+but if the purpose of this is to get an acceptable simulation of a firework, why shouldn't i set it by default to
+an acceptable value? this avoids the need for another user parameter while guaranteeing an accurate firework simulation
+so I'm going to set the time interval myself. we'll make it something small, around 0.05.
+
+the user will give a set time, which the particlemanager will handle. it will iterate my "update" version until the
+requested time (from the user) is reached, at which point it will stop and the values will remain as iterated.
+now the user can get the toString, get the number of particles, whatever they want. 
+
+this ALSO means that i don't have to throw timeInterval parameters everywhere; it's going to be a set value.
+this will further simplify code and parameterization. maybe i should then put timeInterval as a parameter in my rungeKutta?
+even better: make a rungekutta system that will take any of the following combinations:
+time, timeInterval, ODESystem
+timeInterval, ODESystem
+ODESystem
+
+then I can overload my estimatevelocities based on the constructor-set values from the above constructors
+this will allow me to simplify code even further and also provide even greater efficiency.
+
+
+
+
+
+
+
+what I want the USER to be able to do:
+
+they'll have some kind of GUI where they can CREATE their firework. they will also create the environment.
+
+what the FIREWORK CREATOR will allow the user to vary:
+
+the colour of the firework
+how high it goes (from maxVelocity & lifeTime)
+how big the explosion is (change starSpark properties: lifeTime, maxVelocity)
+more ideas to come
+
+some of its properties:
+
+mirror fireworks
+set off more than one
+more ideas to come
+
+for the FIREWORK CREATOR, I will have some templates built for things I don't want the user to vary:
+
+a firework that does loops
+a firework that is invisible until it explodes
+more ideas to come...

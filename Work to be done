@@ -1,0 +1,48 @@
+November 21.
+
+Everything is working with basic settings. Time to make this program more robust and finish off the fine parts.
+
+1) Add exceptions for:
+
+LIMITS & LEGALITY:
+sparkCount
+angle
+wind
+mass
+radius
+lifeTime
+renderSize
+density
+maxExitVelocity
+lengthOfTube
+numberOfStars
+
+IMPOSSIBLE EXCEPTIONS:
+negative burnRate
+*negative positions
+null particle
+
+
+2) Coding
+
+WRITING:
+write explosionSpark & explosionSparkEmitter - will be very similar to Emitter
+clean up LaunchTube - currently with defaults
+clean up Star - currently with defaults
+
+CONSIDER CHANGES:
+currently designed to iterate based on the time interval,
+perhaps set an interval for spark launching different from the time interval
+
+
+3) JavaDoc & green comments
+all methods
+all classes
+especially for constructors
+descriptions of each firework's display
+
+
+4) GUI construction
+Once the above is completed, write the basic.
+Once the basic GUI is completed & tweaked, write more Firework types.
+Once more fireworks have been written, update GUI.
